@@ -1,8 +1,6 @@
 package com.company.lesson02;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,25 +22,16 @@ public class Main {
         };
 
         String[][] arr3 = {
-                {"++","02","03","04"},
-                {"05","06","07","08"},
-                {"09","10","11","12"},
-                {"13","14","15","16"}
-        };
-
-        String[][] arr4 = {
                 {"01","02","03","04"},
                 {"05","06","07","08"},
-                {"09","10","11","12"},
+                {"09","10","we","12"},
                 {"13","14","15","16"}
         };
-
-
 
 //        print2dArray(arr);
 
         try {
-            sumIntArray4by4(arr4);
+            sumIntArray4by4(arr3);
         } catch (MyArraySizeException e) {}
         catch (MyArrayDataException e) {}
 
