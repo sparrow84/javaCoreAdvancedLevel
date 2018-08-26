@@ -6,6 +6,6 @@ public class MyArrayDataException extends Exception {
     }
 
     public MyArrayDataException(int i, int j, String s) {
-        System.err.println("MyArrayDataException: in cell [" + i + "," + j + "]" );
+        System.err.println("MyArrayDataException: in cell [" + i + "," + j + "] not a number (" + s + ")");
     }
 }

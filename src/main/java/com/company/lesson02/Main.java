@@ -7,9 +7,30 @@ import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) {
 
-//        String[][] arr = new String[4][4];
+        String[][] arr0 = new String[3][4];
 
-        String[][] arr = {
+        String[][] arr1 = {
+                {"++","02","03","04"},
+                {"05","06","07","08"},
+                {"09","10","11","12"},
+                {"13","14","15","16"}
+        };
+
+        String[][] arr2 = {
+                {"++","02","03","04"},
+                {"05","06","07","08"},
+                {"09","10","11","12"},
+                {"13","14","15","16"}
+        };
+
+        String[][] arr3 = {
+                {"++","02","03","04"},
+                {"05","06","07","08"},
+                {"09","10","11","12"},
+                {"13","14","15","16"}
+        };
+
+        String[][] arr4 = {
                 {"++","02","03","04"},
                 {"05","06","07","08"},
                 {"09","10","11","12"},
@@ -17,8 +38,8 @@ public class Main {
         };
 
 
-//        System.out.println(Arrays.toString(arr));
-        print2dArray(arr);
+
+//        print2dArray(arr);
 
         try {
             sumIntArray4by4(arr);
