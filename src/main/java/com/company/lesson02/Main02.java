@@ -2,7 +2,7 @@ package com.company.lesson02;
 
 import java.util.Arrays;
 
-public class Main {
+public class Main02 {
     public static void main(String[] args) {
 
         String[][] arr0 = new String[3][4];

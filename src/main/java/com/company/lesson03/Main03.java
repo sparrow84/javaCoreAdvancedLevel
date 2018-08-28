@@ -1,8 +1,8 @@
 package com.company.lesson03;
 
-import java.util.HashMap;
+import java.util.*;
 
-public class Main {
+public class Main03 {
     public static void main(String[] args) {
         // Задание №1
 
@@ -23,7 +23,14 @@ public class Main {
             }
         }
 
-        System.out.println(statistics);
+
+
+//        System.out.println(statistics);
+
+        for (Map.Entry<String, Integer> entry: statistics.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("\n");
 
         // Задание №2
 
