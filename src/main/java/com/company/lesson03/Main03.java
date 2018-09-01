@@ -15,6 +15,8 @@ public class Main03 {
 
         HashMap<String, Integer> statistics = new HashMap<String, Integer>();
 
+//        Map Set<Map.Entry<String, Integer>> set = statistics.entrySet();
+
         for (String s: words) {
             if (statistics.containsKey(s)) {
                 statistics.put(s,statistics.get(s)+1);
