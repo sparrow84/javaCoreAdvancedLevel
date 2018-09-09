@@ -4,13 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
-
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 
 public class Client extends JFrame {
 
@@ -24,7 +21,7 @@ public class Client extends JFrame {
     private PrintWriter out;
 
     public static void main(String[] args) {
-        new Client();
+        new Client().setVisible(true);
     }
 
     public Client() {
@@ -46,13 +43,10 @@ public class Client extends JFrame {
         bottomPanel.add(jbSend, BorderLayout.EAST);
         jtf = new JTextField();
         bottomPanel.add(jtf, BorderLayout.CENTER);
-        jbSend.addActionListener(e -> {
-            if (!jtf.getText().trim().isEmpty()) {
-                sendMsg();
-                jtf.grabFocus();
-            }
-        });
+
+        jbSend.addActionListener(e -> sendMsg());
         jtf.addActionListener(e -> sendMsg());
+
         new Thread(() -> {
             try {
                 while (true) {
@@ -83,23 +77,23 @@ public class Client extends JFrame {
                 }
             }
         });
-
-        setVisible(true);
     }
 
     private void initConnection() {
         try {
             sock = new Socket(SERVER_ADDR, SERVER_PORT);
             in = new Scanner(sock.getInputStream());
-            out = new PrintWriter(sock.getOutputStream());
+            out = new PrintWriter(sock.getOutputStream(), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void sendMsg() {
-        out.println(jtf.getText());
-        out.flush();
-        jtf.setText("");
+        if (!jtf.getText().trim().isEmpty()) {
+            out.println(jtf.getText());
+            jtf.setText("");
+            jtf.grabFocus();
+        }
     }
 }

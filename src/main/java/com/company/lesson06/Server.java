@@ -23,6 +23,7 @@ public class Server {
                 String str = sc.nextLine();
                 if (str.equals("end")) break;
                 pw.println("Echo: " + str);
+                System.out.println("Echo: " + str);
                 pw.flush();
             }
         } catch (IOException e) {
