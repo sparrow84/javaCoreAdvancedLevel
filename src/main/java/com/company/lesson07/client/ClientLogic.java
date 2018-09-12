@@ -21,10 +21,7 @@ public class ClientLogic {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
 
     public String endSession() {
 
@@ -45,6 +42,9 @@ public class ClientLogic {
     }
 
     public void windowClose() {
+
+        System.out.println("---debug--- windowClose");
+
         try {
             out.println("end");
             out.flush();
@@ -56,6 +56,9 @@ public class ClientLogic {
     }
 
     public void sendMsg(String msg) {
+
+        System.out.println("---debug--- sendMsg msg = " + msg);
+
         out.println(msg);
         out.flush();
     }

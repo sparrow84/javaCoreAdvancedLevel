@@ -21,7 +21,7 @@ public class ClientGUI extends JFrame {
 //    private Scanner in;
 //    private PrintWriter out;
 
-    public ClientGUI() {
+    public ClientGUI(ClientLogic cl) {
 //        try {
 //            sock = new Socket(SERVER_ADDR, SERVER_PORT);
 //            in = new Scanner(sock.getInputStream());
@@ -30,7 +30,7 @@ public class ClientGUI extends JFrame {
 //            e.printStackTrace();
 //        }
 
-        ClientLogic cl = new ClientLogic();
+//        ClientLogic cl = new ClientLogic();
 
         setBounds(600, 300, 500, 500);
         setTitle("Client");
@@ -52,6 +52,7 @@ public class ClientGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (!jtf.getText().trim().isEmpty()) {
                     cl.sendMsg(jtf.getText());
+                    jtf.setText("");
                     jtf.grabFocus();
                 }
             }
@@ -61,6 +62,8 @@ public class ClientGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cl.sendMsg(jtf.getText());
+                jtf.setText("");
+                jtf.grabFocus();
             }
         });
 

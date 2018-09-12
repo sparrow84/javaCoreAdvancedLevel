@@ -6,12 +6,11 @@ import java.net.Socket;
 import java.util.Vector;
 
 public class Server {
+
    private ServerSocket server;
    private Vector<ClientHandler> clients;
    private AuthService authService;
-   public AuthService getAuthService() {
-       return authService;
-   }
+
    private final int PORT = 8189;
 
     public static void main(String[] args) {
@@ -42,20 +41,28 @@ public class Server {
            authService.stop();
        }
    }
+
+    public AuthService getAuthService() {
+        return authService;
+    }
+
    public synchronized boolean isNickBusy(String nick) {
        for (ClientHandler o : clients) {
            if (o.getName().equals(nick)) return true;
        }
        return false;
    }
+
    public synchronized void broadcastMsg(String msg) {
        for (ClientHandler o : clients) {
            o.sendMsg(msg);
        }
    }
+
    public synchronized void unsubscribe(ClientHandler o) {
        clients.remove(o);
    }
+
    public synchronized void subscribe(ClientHandler o) {
        clients.add(o);
    }
