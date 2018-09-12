@@ -10,7 +10,7 @@ public class ClientLogic {
     private final String SERVER_ADDR = "localhost";
     private final int SERVER_PORT = 8189;
     private Socket sock;
-    private Scanner in;
+    Scanner in;
     private PrintWriter out;
 
     public ClientLogic() {
@@ -31,6 +31,9 @@ public class ClientLogic {
             while (true) {
                 if (in.hasNext()) {
                     w = in.nextLine();
+
+                    System.out.println("---debug--- w = " + w);
+
                     if (w.equalsIgnoreCase("end session")) break;
                 }
             }
