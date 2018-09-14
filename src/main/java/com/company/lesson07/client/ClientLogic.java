@@ -21,9 +21,17 @@ public class ClientLogic {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
+
+
+
+
+
     }
 
-    public String endSession() {
+    public String receiveMsg() {
 
         String w = "";
 
