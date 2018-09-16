@@ -1,9 +1,8 @@
-package com.company.lesson08;
+package com.company.lesson08.Server;
 
-import com.company.lesson04.GUI;
-
-public class Main08 {
+public class MainServer {
     public static void main(String[] args) {
         System.out.println("Start lesson08.");
+        new Server();
     }
 }
