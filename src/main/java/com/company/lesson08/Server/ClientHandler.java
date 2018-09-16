@@ -25,8 +25,8 @@ public class ClientHandler {
             // Поток отслеживает таймаут для отключения при простое во время логина
             Thread t3 = new Thread(() -> {
                 try {
-                    sleep(5000);
-                    sendMsg("Connection timed out.");
+                    sleep(120000);
+                    sendMsg("Connection timed out. _");
                     System.out.println("ClientHandler.this.socket before -> " + ClientHandler.this.socket);
                     System.out.println("Socket is closed -> " + ClientHandler.this.socket.isClosed());
                     ClientHandler.this.socket.close();
@@ -120,9 +120,6 @@ public class ClientHandler {
             e.printStackTrace();
         }
     }
-
-
-
 
 
     public String getNick() {
