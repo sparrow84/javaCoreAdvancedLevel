@@ -26,7 +26,7 @@ public class ClientHandler {
             Thread t3 = new Thread(() -> {
                 try {
                     sleep(120000);
-                    sendMsg("Connection timed out. _");
+                    sendMsg("Server: Connection timed out.");
                     System.out.println("ClientHandler.this.socket before -> " + ClientHandler.this.socket);
                     System.out.println("Socket is closed -> " + ClientHandler.this.socket.isClosed());
                     ClientHandler.this.socket.close();
@@ -41,8 +41,16 @@ public class ClientHandler {
 
 
             Thread t1 = new Thread(() -> {
+
+                System.out.println("---debug--- ClientHandler Thread t1 START");
+
                 try {
+
+                    System.out.println("---debug--- ClientHandler Thread t1 START go try");
+
                     while (true) {
+
+                        System.out.println("---debug--- ClientHandler Thread t1 START go try go while");
 
                         if (ClientHandler.this.socket.isClosed()) {
                             System.out.println("Client Handler is interrupted -> " + Thread.currentThread().isInterrupted());
@@ -50,7 +58,12 @@ public class ClientHandler {
                             System.out.println("Client Handler is interrupted -> " + Thread.currentThread().isInterrupted());
                         }
 
+                        System.out.println("---debug--- ClientHandler Thread t1 START 63 String msg = in.readUTF();");
+
                         String msg = in.readUTF();
+
+                        System.out.println("---debug--- ClientHandler recive msg: " + msg);
+
                         if (msg.startsWith("/auth")) {
                             String[] data = msg.split("\\s");
                             if (data.length == 3) {

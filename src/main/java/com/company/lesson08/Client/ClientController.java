@@ -1,5 +1,6 @@
 package com.company.lesson08.Client;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -13,24 +14,28 @@ public class ClientController implements Controller {
 
     private Socket sock;
     private Scanner in;
-    private PrintWriter out;
+//    private PrintWriter out;
+    private DataOutputStream out;
     private int index = new Random().nextInt(3) + 1;
 
     public ClientController() {
         initConnection();
+        ui = new Client(this);
+        this.showUI(ui);
     }
 
     public void showUI(ClientUI ui) {
         this.ui = ui;
         ui.showUI();
-        sendMessage("/auth login" + index + " pass" + index);
+//        sendMessage("/auth login" + index + " pass" + index);
     }
 
     private void initConnection() {
         try {
             sock = new Socket(SERVER_ADDR, SERVER_PORT);
             in = new Scanner(sock.getInputStream());
-            out = new PrintWriter(sock.getOutputStream(), true);
+//            out = new PrintWriter(sock.getOutputStream(), true);
+            out = new DataOutputStream(sock.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +56,15 @@ public class ClientController implements Controller {
 
     @Override
     public void sendMessage(String msg) {
-        out.println(msg);
+//        out.println(msg);
+
+        System.out.println("---debug--- ClientController sendMessage");
+
+        try {
+            out.writeUTF(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
